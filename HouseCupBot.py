@@ -92,7 +92,7 @@ def SubScan():
 			cur.execute('INSERT INTO oldposts VALUES(?)', (pID,))			# Insert the post ID into the table 'oldposts'
 			sql.commit()
 			pBody = p.body.lower()							
-			regCheck = re.search(REGEX, pBody)					# Use regex to look for what we need
+			regCheck = re.search(REGEX, pBody, re.IGNORECASE)					# Use regex to look for what we need
 			if regCheck and RateCheck(pAuth):					# Check if the post contains what we're looking for and the author hasn't tried posting in the last 30 minutes
 				newPoints = int(regCheck.group(0).split()[0])
 				house = regCheck.group(3)
